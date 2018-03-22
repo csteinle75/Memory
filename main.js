@@ -6,7 +6,11 @@ class Card {
 	get value (){
 		return this._value
 	}
+	get display(){
+		return this._display
+	}
 }
+
 class Deck {
 	constructor(){
 		this._cards = []
@@ -18,7 +22,6 @@ class Deck {
 			this._cards.push(new Card(value,display))
 		}
 	}
-
 	get cards (){
 		return this._cards
 	}
@@ -31,28 +34,42 @@ class Deck {
     }
   }
 }
+
 class Memory {
 	constructor(){
 		this.gameBoard = $('#gameContainer')
 		this._gameDeck = aDeck
+		this._storage = []
 	}
 
 	get gameDeck (){
 		return this._gameDeck
 	}
+	get storage (){
+		return this._storage
+	}
 	display(){
 		this.gameDeck.cards.forEach(card =>{
-			// console.log(card)
 			this.gameBoard.append(`
-				<div class="card">
-					<div class="front">${card.value}</div>
+				<div class="card" title="${card.value}">
+					<div class="front">${card.display}</div>
 					<div class="back">Back</div>
 				</div>
 				`)
 		})
 	}
-	cardclick(){
-		console.log('working')
+	cardclick(filterNum){
+		 this._storage.push(this.gameDeck.cards.filter(card => card.value === parseInt(filterNum))[0])
+	}
+	compare(){
+		if (this.storage.length === 2){
+			if (this.storage[0].value === this.storage[1].value){
+				console.log(true)
+			} else {console.log(false)}
+			this._storage = []
+			console.log(this.storage)
+			$("#gameContainer").find('.open').removeClass('open')
+		}
 	}
 }
 let aDeck = new Deck()
@@ -60,9 +77,17 @@ let game = new Memory()
 
 aDeck.shuffle()
 game.display()
+const opener = function(){
+	console.log($())
+}
 
 $( document ).ready(function() {
-    $("#gameContainer").on('click', '.back', function(){
-    	game.cardclick()
+    $("#gameContainer").on('click', '.card', function(){
+    	if(!$(this).hasClass('open')){
+			game.cardclick($(this).attr('title'))
+		}   	
+
+    	$(this).addClass('open')
+    	game.compare()
     })
 });
