@@ -1,0 +1,38 @@
+body {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+*, *:before, *:after{
+	box-sizing: inherit;
+}
+#gameContainer{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	width: 700px;
+	align-content: center;
+}
+.card {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	background-color: #ccc;
+	margin: 5px;
+	text-align: center;
+	line-height: 100px	
+}
+.front,.back{
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	top:0;
+	left:0;
+}
+.back {
+	background-color: #aaa;
+	z-index: 2
+}
+.front{
+	z-index: 1
+}
