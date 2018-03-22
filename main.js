@@ -64,8 +64,10 @@ class Memory {
 	compare(){
 		if (this.storage.length === 2){
 			if (this.storage[0].value === this.storage[1].value){
-				console.log(true)
-			} else {console.log(false)}
+				$('.open').addClass('correct')
+			} else {
+				console.log(false)
+			}
 			this._storage = []
 			console.log(this.storage)
 			$("#gameContainer").find('.open').removeClass('open')
@@ -77,17 +79,14 @@ let game = new Memory()
 
 aDeck.shuffle()
 game.display()
-const opener = function(){
-	console.log($())
-}
+
 
 $( document ).ready(function() {
     $("#gameContainer").on('click', '.card', function(){
-    	if(!$(this).hasClass('open')){
+    	if(!$(this).hasClass('open') && !$(this).hasClass('correct') ){
 			game.cardclick($(this).attr('title'))
+			$(this).addClass('open')
 		}   	
-
-    	$(this).addClass('open')
     	game.compare()
     })
 });
