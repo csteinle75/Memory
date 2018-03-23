@@ -24,6 +24,7 @@ body {
 	text-align: center;
 	line-height: 100px;
 	cursor: pointer;	
+	overflow: hidden;
 }
 .front,.back{
 	position: absolute;
@@ -46,4 +47,13 @@ body {
 	border:1px solid grey;
 	border-radius: 15px;
 	font-family: sans-serif; 
+}
+.cardPics{
+	position: absolute;
+	top: 8px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	max-height: 100%;
+	max-width: 100%;
 }

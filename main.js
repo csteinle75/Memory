@@ -1,3 +1,4 @@
+const images = ['resources/charmander.svg', 'resources/gameboy.svg', 'resources/master-ball.svg', 'resources/multiple-pokeballs.svg', 'resources/phone.svg', 'resources/pikachu.svg', 'resources/pokeball.svg', 'resources/pokestop.svg', 'resources/squirtle.svg']
 class Card {
 	constructor(value, display){
 		this._value = value
@@ -17,7 +18,7 @@ class Deck {
 		
 		for (let i = 1; i <= 9; i++){
 			let value = i
-			let display = i
+			let display = images[i - 1]
 			this._cards.push(new Card(value,display))
 			this._cards.push(new Card(value,display))
 		}
@@ -55,7 +56,7 @@ class Memory {
 		this.gameDeck.cards.forEach(card =>{
 			this.gameBoard.append(`
 				<div class="card" title="${card.value}">
-					<div class="back">${card.display}</div>
+					<div class="back"><img src="${card.display}" class="cardPics"/></div>
 					<div class="front">X</div>
 				</div>
 				`)
