@@ -4,18 +4,25 @@ body {
 	padding: 0;
 	background-color: #7EBAF0;
 	transition: background-color 1s;
+	font-family: sans-serif;
 }
 *, *:before, *:after{
 	box-sizing: inherit;
+	font-family: inherit;	
+}
+#mainContainer{
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	width: 700px;
+	margin: auto;
+	padding: 50px 0 0 0;
 }
 #gameContainer{
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
-	width: 700px;
 	align-content: center;
-	margin-left: 30%;
-	margin-top: 15%;
 }
 .card {
 	position: relative;
