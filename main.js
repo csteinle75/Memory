@@ -100,6 +100,10 @@ class Memory {
 			$('body').css('background-color', '#7EF0BA') 
 			if(this._gameOver === false){
 				$('#mainContainer').append(`<button id="newGame">Play Again?</button>`)
+				$('#newGame').on('click', function(e){
+					e.preventDefault()
+					window.location.reload(true);
+				})
 			}
 			this._gameOver = true
 		}
@@ -111,6 +115,10 @@ class Memory {
 			}, 1001)
 			if(this._gameOver === false){
 				$('#mainContainer').append(`<button id="newGame">Try Again?</button>`)
+				$('#newGame').on('click', function(e){
+					e.preventDefault()
+					window.location.reload(true);
+				})
 			}
 			this._gameOver = true
 		}
@@ -128,6 +136,7 @@ $( document ).ready(function() {
 		trigger: 'manual'
 	})
 	
+
     $("#gameContainer").on('click', '.card', function(){
     	if(!$(this).hasClass('open') && !$(this).hasClass('correct') ){
 			game.cardclick($(this).attr('title'))
