@@ -40,6 +40,8 @@ class Memory {
 		this.gameBoard = $('#gameContainer')
 		this._gameDeck = aDeck
 		this._storage = []
+		this._score = 0
+		this._lives = 10
 	}
 
 	get gameDeck (){
@@ -48,6 +50,7 @@ class Memory {
 	get storage (){
 		return this._storage
 	}
+	// get score
 	display(){
 		this.gameDeck.cards.forEach(card =>{
 			this.gameBoard.append(`
@@ -62,13 +65,13 @@ class Memory {
 		 this._storage.push(this.gameDeck.cards.filter(card => card.value === parseInt(filterNum))[0])
 	}
 	compare(){
+		$('.open').flip(true)
 		if (this.storage.length === 2){
 			if (this.storage[0].value === this.storage[1].value){
 				$('.open').addClass('correct').removeClass('open')
 				$('.correct').off(".flip")
 			} else {
 				setTimeout(function(){
-					console.log(false)
 					$('.card').siblings('.open').flip(false).removeClass('open')
 				}, 1000)
 			}
@@ -86,9 +89,9 @@ game.display()
 
 $( document ).ready(function() {
 	$('.card').flip({
-		trigger: 'click'
+		trigger: 'manual'
 	})
-	$('.card.correct').flip({})
+	
     $("#gameContainer").on('click', '.card', function(){
     	if(!$(this).hasClass('open') && !$(this).hasClass('correct') ){
 			game.cardclick($(this).attr('title'))
