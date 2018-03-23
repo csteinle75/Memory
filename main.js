@@ -62,7 +62,7 @@ class Memory {
 			this.gameBoard.append(`
 				<div class="card" title="${card.value}">
 					<div class="back"><img src="${card.display}" class="cardPics"/></div>
-					<div class="front">X</div>
+					<div class="front"><img src="resources/snorlax.svg" class="snorlax"/></div>
 				</div>
 				`)
 		})
