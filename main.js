@@ -143,7 +143,7 @@ let aDeck
 
 $( document ).ready(function() {
 
-	$('#newGame').on('click', function(e){
+	$('#startGame').on('click', function(e){
 		e.preventDefault()
 		aDeck = new Deck()
 		let game = new Memory()
@@ -168,6 +168,6 @@ $( document ).ready(function() {
 	    	game.compare()
 	    	game.gamestatus()
 	    })
-	    $('#newGame').remove()
+	    $('#startGame').remove()
 	})
 });
