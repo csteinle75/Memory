@@ -52,8 +52,8 @@ class Memory {
 		this.gameDeck.cards.forEach(card =>{
 			this.gameBoard.append(`
 				<div class="card" title="${card.value}">
-					<div class="front">${card.display}</div>
-					<div class="back">Back</div>
+					<div class="back">${card.display}</div>
+					<div class="front">Back</div>
 				</div>
 				`)
 		})
@@ -67,6 +67,7 @@ class Memory {
 				$('.open').addClass('correct')
 			} else {
 				console.log(false)
+				
 			}
 			this._storage = []
 			console.log(this.storage)
@@ -82,6 +83,9 @@ game.display()
 
 
 $( document ).ready(function() {
+	$('.card').flip({
+		trigger: 'click'
+	})
     $("#gameContainer").on('click', '.card', function(){
     	if(!$(this).hasClass('open') && !$(this).hasClass('correct') ){
 			game.cardclick($(this).attr('title'))
