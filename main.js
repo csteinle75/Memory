@@ -53,7 +53,7 @@ class Memory {
 			this.gameBoard.append(`
 				<div class="card" title="${card.value}">
 					<div class="back">${card.display}</div>
-					<div class="front">Back</div>
+					<div class="front">X</div>
 				</div>
 				`)
 		})

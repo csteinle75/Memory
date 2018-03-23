@@ -2,6 +2,7 @@ body {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	background-color: #7EBAF0;
 }
 *, *:before, *:after{
 	box-sizing: inherit;
@@ -12,6 +13,8 @@ body {
 	justify-content: center;
 	width: 700px;
 	align-content: center;
+	margin-left: 30%;
+	margin-top: 15%;
 }
 .card {
 	position: relative;
@@ -19,7 +22,8 @@ body {
 	height: 100px;
 	margin: 5px;
 	text-align: center;
-	line-height: 100px	
+	line-height: 100px;
+	cursor: pointer;	
 }
 .front,.back{
 	position: absolute;
@@ -29,8 +33,11 @@ body {
 	left:0;
 }
 .front {
-	background-color: #aaa;
+	background-color: black;
+	color:white;
+	font-size: 40px;
 }
 .back{
-	background-color: #888;
+	background-color: grey;
+	color: white;
 }
