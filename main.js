@@ -42,7 +42,7 @@ class Memory {
 		this._gameDeck = aDeck
 		this._storage = []
 		this._score = 0
-		this._lives = 1
+		this._lives = 8
 		this._gameOver = false
 	}
 

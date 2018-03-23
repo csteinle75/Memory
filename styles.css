@@ -45,14 +45,14 @@ body {
 	background-color: #4441f4;
 	color:white;
 	font-size: 40px;
-	border:1px solid transparent;
+	border:1px solid black;
 	border-radius: 15px;
 	font-family: Sans-serif;
 }
 .back{
 	background-color: yellow;
 	color: white;
-	border:1px solid transparent;
+	border:1px solid black;
 	border-radius: 15px;
 	font-family: sans-serif; 
 }
