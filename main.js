@@ -44,6 +44,7 @@ class Memory {
 		this._score = 0
 		this._lives = 8
 		this._gameOver = false
+		this._timer = 90
 	}
 
 	get gameDeck (){
@@ -55,6 +56,13 @@ class Memory {
 	get lives(){
 		return this._lives
 	}
+	get countdown(){
+		if (this._timer > 0 && this._gameOver === false){
+			this._timer -=1
+			$('#timeRemaining').text(`Time Remaining: ${this._timer}`)
+		}
+	}
+
 	// get score
 	display(){
 		$('#livesRemaining').text(`Lives Remaining: ${this.lives}`)
@@ -107,7 +115,7 @@ class Memory {
 			}
 			this._gameOver = true
 		}
-		if(this._lives === 0){
+		if(this._lives === 0 || this._timer === 0){
 			$('body').css('background-color', '#f00') 
 			setTimeout(()=>{
 				$('.card').flip(true)
@@ -124,25 +132,42 @@ class Memory {
 		}
 	}
 }
-let aDeck = new Deck()
-let game = new Memory()
 
-aDeck.shuffle()
-game.display()
+// let aDeck = new Deck()
+// let game = new Memory()
+
+// aDeck.shuffle()
+// game.display()
+let aDeck
 
 
 $( document ).ready(function() {
-	$('.card').flip({
-		trigger: 'manual'
-	})
-	
 
-    $("#gameContainer").on('click', '.card', function(){
-    	if(!$(this).hasClass('open') && !$(this).hasClass('correct') ){
-			game.cardclick($(this).attr('title'))
-			$(this).addClass('open')
-		}   	
-    	game.compare()
-    	game.gamestatus()
-    })
+	$('#newGame').on('click', function(e){
+		e.preventDefault()
+		aDeck = new Deck()
+		let game = new Memory()
+
+		aDeck.shuffle()
+		game.display()
+
+		$('.card').flip({
+			trigger: 'manual'
+		})
+	
+		setInterval(()=> {	
+			game.countdown
+			game.gamestatus()
+		}, 1000)
+
+	    $("#gameContainer").on('click', '.card', function(){
+	    	if(!$(this).hasClass('open') && !$(this).hasClass('correct') ){
+				game.cardclick($(this).attr('title'))
+				$(this).addClass('open')
+			}   	
+	    	game.compare()
+	    	game.gamestatus()
+	    })
+	    $('#newGame').remove()
+	})
 });
