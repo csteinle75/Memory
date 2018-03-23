@@ -64,14 +64,16 @@ class Memory {
 	compare(){
 		if (this.storage.length === 2){
 			if (this.storage[0].value === this.storage[1].value){
-				$('.open').addClass('correct')
+				$('.open').addClass('correct').removeClass('open')
+				$('.correct').off(".flip")
 			} else {
-				console.log(false)
-				
+				setTimeout(function(){
+					console.log(false)
+					$('.card').siblings('.open').flip(false).removeClass('open')
+				}, 1000)
 			}
 			this._storage = []
 			console.log(this.storage)
-			$("#gameContainer").find('.open').removeClass('open')
 		}
 	}
 }
@@ -86,6 +88,7 @@ $( document ).ready(function() {
 	$('.card').flip({
 		trigger: 'click'
 	})
+	$('.card.correct').flip({})
     $("#gameContainer").on('click', '.card', function(){
     	if(!$(this).hasClass('open') && !$(this).hasClass('correct') ){
 			game.cardclick($(this).attr('title'))
