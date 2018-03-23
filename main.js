@@ -99,8 +99,8 @@ class Memory {
 		if($('.correct').length === this.gameDeck.cards.length){
 			$('body').css('background-color', '#7EF0BA') 
 			if(this._gameOver === false){
-				$('#mainContainer').append(`<button id="newGame">Play Again?</button>`)
-				$('#newGame').on('click', function(e){
+				$('#mainContainer').append(`<button id="restartGood">Play Again?</button>`)
+				$('#restartGood').on('click', function(e){
 					e.preventDefault()
 					window.location.reload(true);
 				})

@@ -88,4 +88,21 @@ body {
 	padding: 6px;
 	width: 200px;
 	align-self: center;
+	border-radius: 15px;
+	background-color: #c00;
+	outline: none;
+	border:none;
+	cursor:pointer;
+}
+#restartGood{
+	margin: 20px;
+	font-size: 20px;
+	padding: 6px;
+	width: 200px;
+	align-self: center;
+	border-radius: 15px;
+	background-color: #0c0;
+	outline: none;
+	border:none;
+	cursor:pointer;
 }
