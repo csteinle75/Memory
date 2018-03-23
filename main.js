@@ -42,7 +42,8 @@ class Memory {
 		this._gameDeck = aDeck
 		this._storage = []
 		this._score = 0
-		this._lives = 8
+		this._lives = 1
+		this._gameOver = false
 	}
 
 	get gameDeck (){
@@ -97,6 +98,10 @@ class Memory {
 
 		if($('.correct').length === this.gameDeck.cards.length){
 			$('body').css('background-color', '#7EF0BA') 
+			if(this._gameOver === false){
+				$('#mainContainer').append(`<button id="newGame">Play Again?</button>`)
+			}
+			this._gameOver = true
 		}
 		if(this._lives === 0){
 			$('body').css('background-color', '#f00') 
@@ -104,6 +109,10 @@ class Memory {
 				$('.card').flip(true)
 				$('.card').addClass('open')
 			}, 1001)
+			if(this._gameOver === false){
+				$('#mainContainer').append(`<button id="newGame">Try Again?</button>`)
+			}
+			this._gameOver = true
 		}
 	}
 }
