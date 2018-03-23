@@ -36,8 +36,12 @@ body {
 	background-color: black;
 	color:white;
 	font-size: 40px;
+	border:1px solid black;
+	border-radius: 15px;
 }
 .back{
 	background-color: grey;
 	color: white;
+	border:1px solid grey;
+	border-radius: 15px;
 }
