@@ -69,8 +69,10 @@ class Memory {
 		$('.open').flip(true)
 		if (this.storage.length === 2){
 			if (this.storage[0].value === this.storage[1].value){
+				console.log($('.correct').siblings('.back'))
 				$('.open').addClass('correct').removeClass('open')
 				$('.correct').off(".flip")
+				$('.correct .back').css('background-color', 'rgb(100,202,87)')
 			} else {
 				setTimeout(function(){
 					$('.card').siblings('.open').flip(false).removeClass('open')
@@ -78,6 +80,10 @@ class Memory {
 			}
 			this._storage = []
 			console.log(this.storage)
+		}
+	
+		if($('.correct').length === this.gameDeck.cards.length){
+			$('body').css('background-color', '#7EF0BA') 
 		}
 	}
 }
