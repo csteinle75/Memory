@@ -42,7 +42,7 @@ class Memory {
 		this._gameDeck = aDeck
 		this._storage = []
 		this._score = 0
-		this._lives = 10
+		this._lives = 8
 	}
 
 	get gameDeck (){
@@ -51,8 +51,12 @@ class Memory {
 	get storage (){
 		return this._storage
 	}
+	get lives(){
+		return this._lives
+	}
 	// get score
 	display(){
+		$('#livesRemaining').text(`Lives Remaining: ${this.lives}`)
 		this.gameDeck.cards.forEach(card =>{
 			this.gameBoard.append(`
 				<div class="card" title="${card.value}">
@@ -73,17 +77,33 @@ class Memory {
 				$('.open').addClass('correct').removeClass('open')
 				$('.correct').off(".flip")
 				$('.correct .back').css('background-color', 'rgb(100,202,87)')
+
 			} else {
 				setTimeout(function(){
 					$('.card').siblings('.open').flip(false).removeClass('open')
 				}, 1000)
+				this._lives -= 1
+				
 			}
 			this._storage = []
+			console.log(this._lives)
 			console.log(this.storage)
 		}
 	
+		
+	}
+	gamestatus(){
+		$('#livesRemaining').text(`Lives Remaining: ${this.lives}`)
+
 		if($('.correct').length === this.gameDeck.cards.length){
 			$('body').css('background-color', '#7EF0BA') 
+		}
+		if(this._lives === 0){
+			$('body').css('background-color', '#f00') 
+			setTimeout(()=>{
+				$('.card').flip(true)
+				$('.card').addClass('open')
+			}, 1001)
 		}
 	}
 }
@@ -105,5 +125,6 @@ $( document ).ready(function() {
 			$(this).addClass('open')
 		}   	
     	game.compare()
+    	game.gamestatus()
     })
 });
