@@ -77,9 +77,11 @@ body {
 
 #livesRemaining {
 	padding-left: 25px;
+	font-size: 25px;
 }
 #timeRemaining{
-	padding-left: 50px;
+	padding-left: 118px;
+	font-size: 25px;
 }
 #livesRemaining, #timeRemaining{
 	display: inline-block;

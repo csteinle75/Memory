@@ -42,9 +42,9 @@ class Memory {
 		this._gameDeck = aDeck
 		this._storage = []
 		this._score = 0
-		this._lives = 8
+		this._lives = 12
 		this._gameOver = false
-		this._timer = 90
+		this._timer = 60
 	}
 
 	get gameDeck (){
@@ -65,7 +65,7 @@ class Memory {
 
 	// get score
 	display(){
-		$('#livesRemaining').text(`Lives Remaining: ${this.lives}`)
+		$('#livesRemaining').text(`Attempts Remaining: ${this.lives}`)
 		this.gameDeck.cards.forEach(card =>{
 			this.gameBoard.append(`
 				<div class="card" title="${card.value}">
@@ -102,7 +102,7 @@ class Memory {
 		
 	}
 	gamestatus(){
-		$('#livesRemaining').text(`Lives Remaining: ${this.lives}`)
+		$('#livesRemaining').text(`Attempts Remaining: ${this.lives}`)
 
 		if($('.correct').length === this.gameDeck.cards.length){
 			$('body').css('background-color', '#7EF0BA') 
